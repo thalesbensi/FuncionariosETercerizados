@@ -1,6 +1,6 @@
 package application;
 
-import com.sun.security.jgss.GSSUtil;
+
 import entities.Employee;
 import entities.OutsourcedEmployee;
 
@@ -21,7 +21,7 @@ public class Program {
         List<Employee> list = new ArrayList<>();
 
         for (int i = 0; i < n; i++ ){
-            System.out.println("Employee #" + (i + 1) + "data: " );
+            System.out.println("Employee #" + (i + 1) + " data: " );
             System.out.print("Outsourced (y/n) ");
             char choose = scan.next().charAt(0);
             scan.nextLine();
@@ -38,7 +38,7 @@ public class Program {
                     Employee employee = new OutsourcedEmployee(name, hours, valuePerHour, additionalCharge);
                     list.add(employee);
 
-                } if (choose == 'y' ){
+                } if (choose == 'n' ){
                 System.out.print("Name: ");
                 String name = scan.nextLine();
                 System.out.print("Hours: ");
@@ -53,6 +53,13 @@ public class Program {
                 System.out.println("Insira uma resposta válida");
                 }
 
+        }
+
+        System.out.println();
+        System.out.println("PAYMENTS:");
+
+        for (Employee employee: list){
+            System.out.println(employee.getName() + " - $ " + employee.payment());
         }
 
 
