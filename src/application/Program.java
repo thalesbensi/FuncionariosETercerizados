@@ -4,6 +4,8 @@ import com.sun.security.jgss.GSSUtil;
 import entities.Employee;
 import entities.OutsourcedEmployee;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -15,12 +17,15 @@ public class Program {
 
         System.out.print("Enter the number of  employees: ");
         int n = scan.nextInt();
-        scan.nextLine();
+
+        List<Employee> list = new ArrayList<>();
 
         for (int i = 0; i < n; i++ ){
-            System.out.println("Outsourced (y/n) ");
-            String choose = scan.nextLine();
-                if (choose = "y" ){
+            System.out.println("Employee #" + (i + 1) + "data: " );
+            System.out.print("Outsourced (y/n) ");
+            char choose = scan.next().charAt(0);
+            scan.nextLine();
+                if (choose == 'y' ){
                     System.out.print("Name: ");
                     String name = scan.nextLine();
                     System.out.print("Hours: ");
@@ -31,8 +36,9 @@ public class Program {
                     Double additionalCharge = scan.nextDouble();
 
                     Employee employee = new OutsourcedEmployee(name, hours, valuePerHour, additionalCharge);
+                    list.add(employee);
 
-                } if (choose = "n" ){
+                } if (choose == 'y' ){
                 System.out.print("Name: ");
                 String name = scan.nextLine();
                 System.out.print("Hours: ");
@@ -41,6 +47,7 @@ public class Program {
                 Double valuePerHour = scan.nextDouble();
 
                 Employee employee = new Employee(name, hours, valuePerHour);
+                list.add(employee);
 
                 } else {
                 System.out.println("Insira uma resposta válida");
